@@ -1,0 +1,221 @@
+.container {
+    width: 100%;
+    padding: 0;
+}
+
+body { 
+    position: relative; 
+}
+.comic-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    height: 280px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.comic-card h4 {
+    font-size: 14px;
+    height: 34px;
+    overflow: hidden;
+    margin: 5px 0;
+}
+.dropdown-toggle {
+    cursor: pointer;
+}
+.user-dropdown {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    justify-content: center;
+}
+.ranking-box {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 230px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+.ranking-box h4 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.header1 {
+    width: 100vw;
+    height: 70px;
+    background-color: #333;
+    display:flex;
+}
+
+.form-inline {
+    display: flex;
+    margin: auto;
+}
+
+h2 {
+    margin-bottom: 50px;
+    margin-left: 70px;
+}
+
+.comic-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Khoảng cách giữa các truyện */
+}
+
+.comic-item {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+
+.comic-card h4 {
+    font-size: 14px;
+    height: auto; /* Điều chỉnh chiều cao tự động */
+    overflow: hidden;
+    margin: 5px 5px 0 5px; /* Thêm margin ngang */
+    font-weight: bold;
+    color: #333;
+}
+
+.comic-card p {
+    font-size: 12px;
+    color: #777;
+    margin: 5px;
+}
+
+.comic-card p strong {
+    font-weight: bold;
+    color: #555;
+}
+
+.comic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); /* Tạo các cột có chiều rộng tối thiểu 150px, tự động lấp đầy */
+    gap: 30px; /* Khoảng cách giữa các item */
+    padding: 10px;
+    margin: 0 auto; /* Căn giữa grid */
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+}
+
+.comic-item {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff; /* Màu nền nhạt */
+    transition: transform 0.2s ease-in-out;
+    max-height: 280px; /* Điều chỉnh giá trị này */ 
+}
+
+.comic-item:hover {
+    transform: translateY(-3px); /* Nhấc nhẹ khi hover */
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+}
+
+.comic-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.truyen-bia {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/ 4; /* Tỷ lệ khung hình */
+    object-fit: cover;
+    border-radius: 5px; /* Bo tròn góc trên */
+    margin-bottom: 5px;
+    max-height: none;    
+
+}
+
+.truyen-title {
+    font-size: 0.9rem; /* Kích thước chữ nhỏ hơn */
+    font-weight: bold;
+    margin: 5px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.truyen-genre {
+    font-size: 0.8rem; /* Kích thước chữ nhỏ hơn nữa */
+    color: #777;
+    margin: 2px 5px 5px 5px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: auto; /* Đẩy xuống dưới */
+}
+
+.pagination{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ranking-carousel {
+    width: 100vw;
+    overflow-x: hidden;
+    margin: 30px 0;
+    padding: 10px 0;
+    background: #f9f9f9;
+    border-radius: 10px;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    animation: slideCarousel 30s linear infinite;
+    width: max-content;
+    padding-left: 20px;
+}
+
+.carousel-item {
+    min-width: 180px;
+    flex-shrink: 0;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.carousel-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 5px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@keyframes slideCarousel {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-1000px); } /* Điều chỉnh tùy số lượng item */
+}

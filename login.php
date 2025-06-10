@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($user['role'] == 'admin') {
                 header("Location: dashboard_admin.php");
             } elseif ($user['role'] == 'uploader') {
-                header("Location: index.php");
+                header("Location: dashboard_uploader.php");
             } else {
                 header("Location: index.php");
             }

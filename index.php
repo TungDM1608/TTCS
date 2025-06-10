@@ -196,7 +196,7 @@ $ranking_result = $conn->query($ranking_sql);
         }
 
         .search-form .btn-primary {
-            background-color: var(--primary-blue);
+            background-color: #ddd;
             border: none; /* Bỏ viền */
             color: var(--white);
             padding: 10px 22px;
@@ -206,6 +206,7 @@ $ranking_result = $conn->query($ranking_sql);
             display: flex;
             align-items: center;
             gap: 8px; /* Khoảng cách giữa icon và chữ */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         .search-form .btn-primary:hover {
             background-color: #0056B3;
@@ -225,7 +226,7 @@ $ranking_result = $conn->query($ranking_sql);
         }
 
         .user-dropdown .dropdown-toggle {
-            background-color: var(--light-gray);
+            background-color: #ddd;
             color: var(--dark-gray);
             border: none;
             padding: 10px 20px;
@@ -239,20 +240,20 @@ $ranking_result = $conn->query($ranking_sql);
         }
         .user-dropdown .dropdown-toggle:hover,
         .user-dropdown .dropdown-toggle:focus {
-            background-color: #DDE0E3;
+            background-color:rgb(179, 179, 179);
             color: var(--dark-gray);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             outline: none; /* Bỏ outline focus mặc định */
         }
         .user-dropdown .dropdown-toggle .caret {
             margin-left: 8px;
-            border-top-color: var(--dark-gray); /* Đổi màu mũi tên */
+            border-top-color: #333; /* Đổi màu mũi tên */
         }
 
         .user-dropdown .dropdown-menu {
             border-radius: 8px; /* Bo tròn menu */
-            box-shadow: 0 8px 25px var(--shadow-hover); /* Đổ bóng mạnh hơn */
-            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 0.5px solid rgba(0,0,0,0.1);
             padding: 10px 0;
             min-width: 200px;
             overflow: hidden; /* Đảm bảo bo tròn góc */

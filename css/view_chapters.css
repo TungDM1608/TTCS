@@ -100,6 +100,25 @@ body {
     color: #fff;
 }
 
+.delete-button {
+    background-color: #f3473e;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 20px;
+}
+
+.delete-button:hover {
+    background-color: #bb0606;
+    text-decoration: none;
+    color: #fff;
+}
+
 .back-button {
     display: inline-block;
     padding: 8px 15px;

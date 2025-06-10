@@ -421,12 +421,17 @@ if ($comment_stmt) {
         }
         .delete-btn {
             font-size: 0.8em;
-            color: #dc3545; /* Màu đỏ cho nút xóa */
+            color: #fff; 
+            background-color: #dc3545; /* Màu đỏ cho nút xóa */
             margin-left: 15px;
             text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
         }
         .delete-btn:hover {
-            text-decoration: underline;
+            text-decoration: none;
+            background-color:rgb(133, 4, 17); 
+                        color: #fff; 
         }
         .comment-form textarea {
             resize: vertical; /* Cho phép thay đổi kích thước theo chiều dọc */
@@ -520,7 +525,7 @@ if ($comment_stmt) {
                             <span class="comment-author"><?= htmlspecialchars($cmt['username']) ?></span>
                             <span class="comment-meta"><?= $cmt['created_at'] ?></span>
                             <?php if (is_admin()): ?>
-                                <a href="?comic_id=<?= $comic_id ?>&chapter_id=<?= $chapter_id ?>&delete_comment=<?= $cmt['id'] ?>" class="delete-btn" onclick="return confirm('Xác nhận xóa bình luận này?')">[Xóa]</a>
+                                <a href="?comic_id=<?= $comic_id ?>&chapter_id=<?= $chapter_id ?>&delete_comment=<?= $cmt['id'] ?>" class="delete-btn" onclick="return confirm('Xác nhận xóa bình luận này?')">Xóa</a>
                             <?php endif; ?>
                         </div>
                         <p class="comment-content"><?= nl2br(htmlspecialchars($cmt['content'])) ?></p>

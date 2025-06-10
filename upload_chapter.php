@@ -3,6 +3,12 @@ include 'includes/session.php';
 include 'includes/db_connect.php';
 
 $message = '';
+$preselected_comic_id = 0; // Biến để lưu ID truyện sẽ được chọn sẵn
+
+// Kiểm tra nếu comic_id được truyền qua URL
+if (isset($_GET['comic_id']) && is_numeric($_GET['comic_id'])) {
+    $preselected_comic_id = intval($_GET['comic_id']);
+}
 
 if (!is_uploader()) {
     echo "Chỉ uploader mới có quyền upload chương!";
@@ -68,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body class="container">
-    <a href="index.php" class="btn btn-default" style="margin-top: 20px;">← Quay về trang chủ</a>
+    <a href="my_comic.php" class="btn btn-default" style="margin-top: 20px;">← Danh sách truyện của tôi</a>
     <h2>Upload Chương mới</h2>
 
     <?php if ($message): ?>
@@ -80,7 +86,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label>Chọn Truyện:</label>
             <select name="comic_id" class="form-control" required>
                 <?php while ($comic = $comics->fetch_assoc()): ?>
-                    <option value="<?= $comic['id'] ?>"><?= htmlspecialchars($comic['title']) ?></option>
+                    <option value="<?= $comic['id'] ?>"
+                        <?php if ($comic['id'] == $preselected_comic_id) echo 'selected'; ?>>
+                        <?= htmlspecialchars($comic['title']) ?>
+                    </option>
                 <?php endwhile; ?>
             </select>
         </div>

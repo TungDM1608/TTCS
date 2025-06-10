@@ -8,7 +8,7 @@ $genres = ['Action', 'Adventure', 'Comedy', 'Drama', 'School Life',
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $filter_genre = isset($_GET['genre']) ? trim($_GET['genre']) : '';
 $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-$limit = 25;
+$limit = 24;
 $offset = ($page - 1) * $limit;
 
 $sql_base = "FROM comics WHERE 1";
@@ -396,7 +396,41 @@ $ranking_result = $conn->query($ranking_sql);
             text-decoration: none;
         }
 
-        
+        .pagination {
+            list-style: none; /* Bỏ dấu chấm đầu dòng */
+            padding: 0;
+            margin: 20px 0; /* Khoảng cách trên dưới */
+
+            display: flex; /* Biến ul thành flex container */
+            justify-content: center; /* Căn giữa các item con theo chiều ngang */
+            align-items: center; /* Căn giữa các item con theo chiều dọc (nếu có chiều cao khác nhau) */
+        }
+
+        .pagination li {
+            /* Khi dùng flexbox, li không cần display: inline-block; nữa */
+            margin: 0 5px; /* Khoảng cách giữa các nút */
+        }
+
+        .pagination li a {
+            display: block; /* Để padding và margin hoạt động tốt hơn */
+            padding: 8px 12px;
+            text-decoration: none;
+            color:rgb(120, 120, 120);
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .pagination li a:hover {
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+        }
+
+        .pagination li.active a {
+            background-color:rgb(62, 62, 62);
+            border-color:rgb(62, 62, 62);
+            color: white;
+        }
   </style>
 </head>
 <body class="container">
@@ -458,6 +492,9 @@ $ranking_result = $conn->query($ranking_sql);
 
 
 <!-- Carousel -->
+ <h2 style="margin-top: 60px">
+    <i class="fas fa-fire"></i> Truyện hay nhất tuần
+ </h2>
 <div class="ranking-carousel-wrapper">
   <button class="carousel-btn left">&#10094;</button>
   <div class="ranking-carousel">

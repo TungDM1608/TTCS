@@ -20,9 +20,19 @@ if (isset($_GET['delete_comic'])) {
     $check_result = $check->get_result();
 
     if ($check_result->num_rows === 1) {
-        // Xoá chương
+        // 1. Xoá trang
         $conn->query("DELETE FROM pages WHERE chapter_id IN (SELECT id FROM chapters WHERE comic_id = $comic_id)");
+
+        // 2. Xoá chương
         $conn->query("DELETE FROM chapters WHERE comic_id = $comic_id");
+
+        // 3. Xoá bình luận
+        $conn->query("DELETE FROM comments WHERE comic_id = $comic_id");
+
+        // 4. Xoá lượt xem
+        $conn->query("DELETE FROM comic_views WHERE comic_id = $comic_id");
+
+        // 5. Cuối cùng xoá truyện
         $conn->query("DELETE FROM comics WHERE id = $comic_id");
 
         $deleted = true;
@@ -222,11 +232,15 @@ $result = $stmt->get_result();
 </head>
 <body class="container">
     <a href="dashboard_uploader.php" class="btn btn-default">← Quay về trang cá nhân</a>
-    <h2><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M21 5H3c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h18c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-18 9v-4h18l.001 4H3zm18-7h-4V7h4v2z"/></svg> Danh sách truyện của tôi</h2>
+    <h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 5H3c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h18c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-18 9v-4h18l.001 4H3zm18-7h-4V7h4v2z"/>
+        </svg>
+        Danh sách truyện của tôi
+    </h2>
 
     <?php if ($deleted): ?>
-        <div class="alert alert-success">✅ Đã xoá truyện thành công!</div>
-        <a href="my_comics.php" class="btn btn-info">Quay về danh sách truyện</a>
+        <div class="alert alert-success"> Đã xoá truyện thành công!</div>
         <hr style="border-top: 1px solid #EEE; margin: 30px 0;">
     <?php endif; ?>
 
@@ -242,8 +256,8 @@ $result = $stmt->get_result();
                 <div class="comic-card-content">
                     <div>
                         <div class="comic-card-title"><?php echo htmlspecialchars($comic['title']); ?></div>
-                        <div class="comic-card-meta">Thể loại: **<?php echo htmlspecialchars($comic['genre']); ?>**</div>
-                        <div class="comic-card-meta">Đăng vào: <?php echo htmlspecialchars(date('d/m/Y', strtotime($comic['created_at']))); ?></div>
+                        <div class="comic-card-meta" style="font-weight:700">Thể loại: <?php echo htmlspecialchars($comic['genre']); ?></div>
+                        <div class="comic-card-meta" style="font-weight:700">Đăng vào: <?php echo htmlspecialchars(date('d/m/Y', strtotime($comic['created_at']))); ?></div>
                     </div>
                     <div class="comic-card-actions">
                         <a href="upload_chapter.php?comic_id=<?php echo htmlspecialchars($comic['id']); ?>" class="btn btn-success">Thêm chương</a>
@@ -257,7 +271,7 @@ $result = $stmt->get_result();
         <div class="empty-state">
             <p>Hiện tại bạn chưa đăng tải truyện nào.</p>
             <p>Hãy bắt đầu tạo truyện đầu tiên của bạn!</p>
-            </div>
+        </div>
     <?php endif; ?>
 </body>
 </html>

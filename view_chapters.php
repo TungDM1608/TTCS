@@ -72,7 +72,7 @@ $chapters = $chapter_stmt->get_result();
 
                     <!-- Nút Xóa chỉ hiện nếu là uploader hoặc admin -->
                     <?php if (is_admin() || (is_uploader() && $_SESSION['user']['id'] == $uploader_id)): ?>
-                        <a href="delete_chapter.php?chapter_id=<?= $chapter['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa chương này?');">Xóa</a>
+                        <a href="delete_chapter.php?chapter_id=<?= $chapter['id'] ?>" class="delete-button btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa chương này?');">Xóa</a>
                     <?php endif; ?>
                 </div>
             <?php endwhile; ?>
